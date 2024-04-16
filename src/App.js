@@ -24,10 +24,13 @@ function App() {
         const updatedBooks = books.map((book) => {
             //if book.id === id, then this is the book object that we want to update.
             if (book.id === id) {
-                return { ...book, ...response.data }; //creating a new object that takes all the existing properties from the book, and puts the new title in.
+                //creating a new object that takes all the existing properties (keys and values) from the book object that we want to edit, and adds the new properties (keys and values) from the response object as well.
+                //essentially only the keys and values from ...response.data are returned because an object can't have duplicate keys ('title' and 'id' keys in this case), and only the final keys are
+                //considered (keys from ...response.data in this case)
+                return { ...book, ...response.data }; 
             }
 
-            return book; //if it's not the book we're looking for then just return that book.
+            return book; //if it's not the book we're looking for then just return that book object.
         });
 
         setBooks(updatedBooks);
@@ -43,7 +46,7 @@ function App() {
         setBooks(updatedBooks);
     };
 
-    //because the value passed into createBook is the same name as the key in the object, title: title is not required.
+    //because the value passed into createBook is the same name as the key in the object, title: title is not required and can be condensed to just title.
     const createBook = async (title) => {
         const response = await axios.post('http://localhost:3001/books', {
             title

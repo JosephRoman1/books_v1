@@ -10,7 +10,7 @@ function BookCreate({ onCreate }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         onCreate(title); //call createBook function from App.js and pass in whatever title the user entered.
-        setTitle('');
+        setTitle(''); //get rid of the text in the input element.
     };
 
     return (

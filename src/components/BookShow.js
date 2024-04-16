@@ -28,7 +28,7 @@ function BookShow({ book, onDelete, onEdit }) {
     };
 
     //if showEdit is false then content just shows the book's title, otherwise content shows BookEdit component.
-    //pass the book object down to BookEdit as a prop, so BookEdit can use the title of the book for the default value of it's state.
+    //if content shows the BookEdit component then pass the book object down to BookEdit as a prop, so BookEdit can use the title of the book for the default value of it's state.
     let content = <h3>{book.title}</h3>;
     if (showEdit) {
         content = <BookEdit onSubmit={handleSubmit} book={book} />;
